@@ -1,0 +1,149 @@
+@import url('../node_modules/corporate-web-assets/assets/live/css/bootstrap/bootstrap.min.css');
+@import 'scss/_pm_main_bootstrap';
+
+
+$error-color:#dc3545;
+
+
+@keyframes placeHolderShimmer{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+
+.pdf-viewer {
+
+  .modal-body {
+    padding: 8px 0px 0px 0px;
+
+    height: calc(100vh - 157px) !important;
+  }
+
+  // .modal-lg {
+  //   height: 90% !important;
+  //   .modal-content{
+  //     height: 100% !important;
+  //     .spectrum-banner {
+  //       height: 100% !important;
+  //       padding-top:8px !important;
+  //     }
+  //   }
+  // }
+}
+
+
+
+.placeholder-loader {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #cacaca;
+  background: linear-gradient(to right, #dedede 8%, #cacaca 18%, #dedede 33%);
+  background-size: 800px 104px;
+  position: relative;
+  border-radius:2px;
+  width: 100%
+}
+
+.ng-touched.ng-invalid {
+  border-color: $error-color;
+}
+
+.error-message {
+  color:$error-color;
+}
+
+.modal-holder{
+  animation-name: example;
+  animation-duration: 0.3s;
+}
+
+@keyframes example {
+  0%   {transform: scale(0.5)}
+  100% {transform: scale(1)}
+}
+
+.cursor-pointer{cursor: pointer;}
+.cursor-croshair{cursor: crosshair;}
+.cursor-eresize{cursor: e-resize;}
+.cursor-move{cursor: move;}
+
+.td {
+  text-align:center;
+  vertical-align:middle;
+}
+
+.question {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  min-height: 24px;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+.alpha {
+  margin-left: 0;
+}
+
+
+
+.full {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.label {
+  text-align: left;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #333333;
+  white-space: normal;
+}
+
+@media (min-width: 768px) {
+  .label {
+    text-align: right;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #333333;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .paddingBottom {
+    padding-bottom: 15px;
+  }
+}
+
+.questionRow {
+  margin:12px;
+}
+
+.labelLeft {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.red-border-class{
+  border: 1px solid red;
+}
+
+hr.sidebarDivider {
+  @extend .mt-2;
+  @extend .mr-3;
+  @extend .mb-3;
+  @extend .ml-1;
+}
+.headingText {
+  @extend .font-weight-bold;
+}  
