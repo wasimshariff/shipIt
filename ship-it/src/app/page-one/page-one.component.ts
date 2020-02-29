@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-page-one',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageOneComponent implements OnInit {
 
-  constructor() { }
+  students: Observable<any>;
+  constructor(private htpClient: HttpClient) { }
 
   ngOnInit() {
+
+    this.students = this.htpClient.get('/api');
   }
 
 }
