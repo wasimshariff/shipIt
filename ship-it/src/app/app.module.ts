@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PageOneComponent } from './page-one/page-one.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AngularMaterialModule} from "./material.module";
-import {FormsModule} from '@angular/forms';
+import {AngularMaterialModule} from './material.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {PageTwoComponent} from './page-two/page-two.component';
+import {MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
-    PageOneComponent
+    PageOneComponent,
+    PageTwoComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     AngularMaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

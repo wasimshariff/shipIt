@@ -1,0 +1,135 @@
+<div class="card text-center">
+  <div class="card-header">
+    <b>Tobacco Usage</b>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="row">
+      <div class="col-6 justify-content-start mb-3">
+        <form class="" [formGroup]="formGroup">
+          <div formGroupName="tobaccoUsage">
+          <div class="row mb-3">
+            <div class="col-6 justify-content-start">
+              <mat-label>Have you used any tobacco, nicotine, marijuana, vape, e-cigarette or tobacco substitute in the last 5 years?</mat-label>
+            </div>
+            <div class="col-6 justify-content-start">
+              <mat-radio-group aria-label="Select an option" formControlName="tobaccoIndicator">
+                <mat-radio-button [value]="true" style="padding-right:4px;">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+            <div class="row mb-3" *ngIf="formGroup.controls['tobaccoUsage'].controls['tobaccoIndicator'].value">
+              <div class="col-6 justify-content-start">
+                <mat-label>Indicate Usage</mat-label>
+              </div>
+              <div class="col-6 justify-content-start">
+                <mat-form-field>
+                  <mat-label>Usage</mat-label>
+                  <mat-select formControlName="usageDuration" name="usageDuration">
+                    <mat-option *ngFor="let tOption of tobaccoUsageOptions" [value]="tOption.value">
+                      {{tOption.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row col-12 justify-content-start mb-3">
+            <mat-label><b>Select which ever apply</b></mat-label>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <mat-chip-list>
+              <mat-chip (click)="selectCondition('asthma')" [ngClass]="getActiveClass('asthma')" >Asthma</mat-chip>
+              <mat-chip (click)="selectCondition('thyroid')" [ngClass]="getActiveClass('thyroid')">Thyroid</mat-chip>
+              <mat-chip (click)="selectCondition('bp')" [ngClass]="getActiveClass('bp')">Blood Pressure</mat-chip>
+              <mat-chip (click)="selectCondition('ch')" [ngClass]="getActiveClass('ch')">Cholesterol</mat-chip>
+            </mat-chip-list>
+          </div>
+          <div class="row justify-content-start mb-3">
+          </div>
+          <div formGroupName="bpReading" *ngIf="isConditionSelected('bp')">
+            <mat-label class="row col-12 justify-content-start"><br/><b>Blood Pressure Readings</b></mat-label>
+            <div class="row justify-content-center mb-3">
+              <div class="col-6">
+                <mat-form-field>
+                  <mat-label>What is your Hdl</mat-label>
+                  <mat-select formControlName="hdl" name="hdl">
+                    <mat-option *ngFor="let hdlOption of hdl" [value]="hdlOption.value">
+                      {{hdlOption.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field>
+                  <mat-label>What is your Ldl</mat-label>
+                  <mat-select formControlName="ldl" name="ldl">
+                    <mat-option *ngFor="let ldlOption of ldl" [value]="ldlOption.value">
+                      {{ldlOption.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="isConditionSelected('ch')">
+            <mat-label class="row col-12 justify-content-start"><br/><b>Cholesterol Questions</b></mat-label>
+            <div class="row">
+              <mat-form-field class="example-full-width col-12">
+                <mat-label>List history of vascular or heart disease(i.e. what diagnosis?)</mat-label>
+                <input matInput >
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="example-full-width col-12">
+                <mat-label>What was your age when diagnosed with this condition?</mat-label>
+                <input matInput >
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="example-full-width col-12">
+                <mat-label>Date of first diagnosis</mat-label>
+                <input matInput placeholder="MM/DD/YYYY">
+              </mat-form-field>
+            </div>
+            <mat-label class="row col-12 justify-content-start mb-3"><br/><h2>Ever had any of the following occurrences or symptoms?</h2></mat-label>
+            <div class="row col-12">
+              <mat-checkbox>Chest Pain</mat-checkbox>
+            </div>
+            <div class="row col-12">
+              <mat-checkbox>Heart Failure</mat-checkbox>
+            </div>
+            <div class="row col-12">
+              <mat-checkbox>Atrial Fibrillation/Flutter</mat-checkbox>
+            </div>
+            <div class="row col-12">
+              <mat-checkbox>Enlarged Heart</mat-checkbox>
+            </div>
+            <div class="row col-12">
+              <mat-checkbox>Trouble Breathing</mat-checkbox>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+      <div class="col-6 justify-content-center mb-3">
+        <div class="card text-center">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <p class="card-text">Side Content....</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
+
+  </div>
+  <div class="card-footer text-muted">
+    © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company
+    2600 Dodge Street, Omaha, Nebraska 68131 </div>
+</div>

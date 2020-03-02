@@ -146,7 +146,25 @@ hr.sidebarDivider {
 }
 .headingText {
   @extend .font-weight-bold;
-}  
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.badge-active {
+  background-color: #ff4081 !important;
+}
+.badge-inactive {
+  background-color: #e0e0e0 !important;
+}
+
+.mat-checkbox.mat-accent .mat-checkbox-inner-container {
+  margin: 2px 8px auto 0;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

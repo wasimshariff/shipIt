@@ -1,15 +1,116 @@
 <div class="card text-center">
   <div class="card-header">
-    Featured
+    <b>Applicant Info</b>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">Page 2....</p>
+    <h5 class="card-title"></h5>
     <div *ngFor="let student of students | async">
       Student Name : {{student.student_name}}
     </div>
+    <div class="row">
+      <div class="col-6 justify-content-center">
+        <form class="" [formGroup]="formGroup">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+              </mat-form-field>
+            </div>
+          </div>
+          <div formGroupName="address">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Address Line 1</mat-label>
+                <input matInput formControlName="addressLine1">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Address Line 2</mat-label>
+                <input matInput formControlName="addressLine2">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="state">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row justify-content-start">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>ZipCode</mat-label>
+                <input matInput formControlName="zipCode" placeholder="-----">
+              </mat-form-field>
+            </div>
+          </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Height</mat-label>
+                <mat-select formControlName="height" name="height">
+                  <mat-option *ngFor="let hoption of heightOptions" [value]="hoption.value">
+                    {{hoption.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Weight</mat-label>
+                <input matInput formControlName="weight" placeholder="in lbs">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row justify-content-start">
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender" name="height">
+                  <mat-option *ngFor="let genderOptions of gender" [value]="genderOptions.value">
+                    {{genderOptions.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-6 justify-content-center">
+        <div class="card text-center">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <p class="card-text">Side Content....</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
+
   </div>
   <div class="card-footer text-muted">
-    2 days ago
-  </div>
+    © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company
+    2600 Dodge Street, Omaha, Nebraska 68131 </div>
+
+
 </div>
