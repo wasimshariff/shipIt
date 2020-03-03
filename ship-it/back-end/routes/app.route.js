@@ -10,8 +10,8 @@ appRoute.use(function timeLog (req, res, next) {
   next()
 });
 
-appRoute.get('/bmi/:id', (req, res) => {
-  dbModel.CrossRef.find({ Type :'BMI' , "Range Minimum" : { $lte : req.params.id}, "Range Maximum" : { $gte : req.params.id}}, (error, data) => {
+appRoute.get('/bmi/:id', (req, res, next) => {
+  dbModel.CrossRef.findOne({ Type :'BMI' , "Range Minimum" : { $lte : req.params.id}, "Range Maximum" : { $gte : req.params.id}}, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -20,10 +20,9 @@ appRoute.get('/bmi/:id', (req, res) => {
   })
 });
 
-appRoute.get('/chol/', (req, res) => {
-  console.log(req.query.gender);
-  console.log(req.query.score);
-  dbModel.CrossRef.find({ Type :'Chol Ratio' , "Parameter" : req.query.gender, "Range Minimum" : { $lte : req.query.score}, "Range Maximum" : { $gte : req.query.score}}, (error, data) => {
+appRoute.get('/chol/', (req, res, next) => {
+  dbModel.CrossRef.findOne({ Type :'Chol Ratio' , "Parameter" : req.query.gender, "Range Minimum" :
+      { $lte : req.query.score}, "Range Maximum" : { $gte : req.query.score}}, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -32,8 +31,8 @@ appRoute.get('/chol/', (req, res) => {
   })
 });
 
-appRoute.get('/tob/:id', (req, res) => {
-  dbModel.CrossRef.find({ Type :'Tob Usage' , "Parameter" : req.params.id}, (error, data) => {
+appRoute.get('/tob/:id', (req, res, next) => {
+  dbModel.CrossRef.findOne({ Type :'Tob Usage' , "Parameter" : req.params.id}, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -42,10 +41,11 @@ appRoute.get('/tob/:id', (req, res) => {
   })
 });
 
-/*
-// Add dbModel
-appRoute.post('/add-student', (req, res, next) => {
-  dbModel.create(req.body, (error, data) => {
+appRoute.get('/coverage/', (req, res, next) => {
+  dbModel.FinalCoverage.findOne({ "EligibilityScoreMin" : { $lte : req.query.score},
+    "EligibilityScoreMax" : { $gte : req.query.score},
+    "IncomeRangeMinimum" : { $lte : req.query.annualIncome},
+    "IncomeRangeMaximum" : { $gte : req.query.annualIncome}}, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -54,55 +54,34 @@ appRoute.post('/add-student', (req, res, next) => {
   })
 });
 
-// Get all student
-appRoute.get('/', (req, res) => {
-  dbModel.find((error, data) => {
+appRoute.get('/driverHistory/:id', (req, res, next) => {
+  dbModel.DMV.find({ licenseNumber : req.params.id }, (error, data) => {
     if (error) {
       return next(error)
     } else {
       res.json(data)
     }
   })
-})
+});
 
-// Get single student
-appRoute.get('/read-student/:id', (req, res) => {
-  dbModel.findById(req.params.id, (error, data) => {
+appRoute.get('/drugHistory/:id', (req, res, next) => {
+  dbModel.PrescriptionDrug.find({ SSN : req.params.id}, (error, data) => {
     if (error) {
       return next(error)
     } else {
       res.json(data)
     }
   })
-})
+});
 
-
-// Update student
-appRoute.put('/update-student/:id', (req, res, next) => {
-  dbModel.findByIdAndUpdate(req.params.id, {
-    $set: req.body
-  }, (error, data) => {
+appRoute.get('/creditHistory/:id', (req, res, next) => {
+  dbModel.FinCredit.find({ SSN : req.params.id}, (error, data) => {
     if (error) {
-      return next(error);
-      console.log(error)
+      return next(error)
     } else {
       res.json(data)
-      console.log('dbModel successfully updated!')
     }
   })
-})
-
-// Delete student
-appRoute.delete('/delete-student/:id', (req, res, next) => {
-  dbModel.findByIdAndRemove(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.status(200).json({
-        msg: data
-      })
-    }
-  })
-});*/
+});
 
 module.exports = appRoute;

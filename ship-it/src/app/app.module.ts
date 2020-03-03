@@ -12,6 +12,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {PageTwoComponent} from './page-two/page-two.component';
 import {MatCheckboxModule} from '@angular/material';
 import {PageThreeComponent} from './page-three/page-three.component';
+import {PageFourComponent} from './page-four/page-four.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {PageThreeComponent} from './page-three/page-three.component';
     WelcomePageComponent,
     PageOneComponent,
     PageTwoComponent,
-    PageThreeComponent
+    PageThreeComponent,
+    PageFourComponent
   ],
   imports: [
     BrowserModule,

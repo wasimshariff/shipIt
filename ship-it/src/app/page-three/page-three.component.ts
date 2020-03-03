@@ -21,12 +21,48 @@ export class PageThreeComponent implements OnInit {
 
   goToNextPage() {
     console.log(JSON.stringify(this.formGroup.value));
+    this.getEligibiltyScore();
+    this.router.navigate(['/pageFour']);
   }
-
-
 
   goToPreviousPage() {
     console.log(JSON.stringify(this.formGroup.value));
     this.router.navigate(['/pageTwo']);
+  }
+
+  private async getEligibiltyScore() {
+    const cholestoralReadings: FormGroup = this.formGroup.controls.cholestoralReadings as FormGroup;
+    const tobaccoReadings: FormGroup = this.formGroup.controls.tobaccoUsage as FormGroup;
+    const bmiScores = await this.appService.getBMIScore(this.formGroup.controls.bmi.value);
+    console.log(JSON.stringify(bmiScores));
+    const cholScores = await this.appService.getCholestoralScore(cholestoralReadings.controls.ratio.value,
+      this.formGroup.controls.gender.value);
+    console.log(JSON.stringify(cholScores));
+    const tobScores = await this.appService.getTobaccoScore(tobaccoReadings.controls.usageDuration.value);
+    console.log(JSON.stringify(tobScores));
+    let totalScore = 0;
+    if (bmiScores) {
+      const bmiScore = bmiScores.Total;
+      this.formGroup.controls.bmiScore.setValue(bmiScore);
+      totalScore = totalScore + bmiScore;
+    }
+    if (cholScores) {
+      const cholScore = cholScores.Total;
+      cholestoralReadings.controls.score.setValue(cholScore);
+      totalScore = totalScore + cholScore;
+    }
+    if (tobScores) {
+      const tobScore = tobScores.Total;
+      tobaccoReadings.controls.score.setValue(tobScore);
+      totalScore = totalScore + tobScore;
+    }
+    this.formGroup.controls.totalScore.setValue(totalScore);
+
+    const eligibleCoverage = await this.appService.getCoverage(this.formGroup.controls.totalScore.value,
+      this.formGroup.controls.annualIncome.value);
+
+    if (eligibleCoverage) {
+      this.formGroup.controls.maxEligibleCoverage.setValue(eligibleCoverage.AvailableMaximumCoverage);
+    }
   }
 }

@@ -82,7 +82,7 @@ let DMV = new Schema({
 
 let PrescriptionDrug = new Schema({
   SSN: {
-    type: String
+    type: Number
   },
   "Type": {
     type: String
@@ -103,6 +103,49 @@ let PrescriptionDrug = new Schema({
   collection: 'prescriptionDrug'
 });
 
+let FinalCoverage = new Schema({
+  EligibilityScoreMin: {
+    type: Number
+  },
+  EligibilityScoreMax: {
+    type: Number
+  },
+  IncomeRangeMinimum: {
+    type: Number
+  },
+  IncomeRangeMaximum: {
+    type: Number
+  },
+  AvailableMinimumCoverage: {
+    type: Number
+  },
+  AvailableMaximumCoverage: {
+    type: Number
+  }
+}, {
+  collection: 'finalCoverage'
+});
+
+let FinCredit = new Schema({
+  SSN: {
+    type: Number
+  },
+  "Total Mortgage": {
+    type: String
+  },
+  "Outstanding Balance": {
+    type: String
+  },
+  "Credit Score": {
+    type: String
+  }
+}, {
+  collection: 'finCredit'
+});
+
 module.exports.CrossRef = mongoose.model('CrossRef', CrossRef);
 module.exports.DMV = mongoose.model('DMV', DMV);
 module.exports.PrescriptionDrug = mongoose.model('PrescriptionDrug', PrescriptionDrug);
+module.exports.FinalCoverage = mongoose.model('FinalCoverage', FinalCoverage);
+module.exports.FinCredit = mongoose.model('FinCredit', FinCredit);
+

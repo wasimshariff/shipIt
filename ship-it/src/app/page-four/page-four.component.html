@@ -1,1 +1,108 @@
-<p>page-four works!</p>
+<div class="card text-center">
+  <div class="card-header">
+    <b>Summary Info</b>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <div class="row">
+      <div class="col-8 justify-content-center">
+        <form class="" [formGroup]="formGroup">
+          <div class="row col-12 justify-content-start">
+            <div>
+              <mat-label class="mr-3"><b>Desired Coverage</b></mat-label>
+              <mat-form-field class="example-full-width">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="coverage">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row col-12 justify-content-start">
+            <div>
+              <mat-label class="mr-3"><b>Max eligible Coverage</b></mat-label>
+              <mat-form-field class="example-full-width">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="maxEligibleCoverage">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="btn btn-group">
+            <button mat-button (click)="proceedWithApp = !proceedWithApp" class="btn btn-primary mr-2">Do you want to Proceed</button>
+          </div>
+          <ng-container *ngIf="proceedWithApp">
+          <div class="row col-12 justify-content-start">
+            <div>
+              <mat-label class="mr-3"><b>SSN</b></mat-label>
+              <mat-form-field class="example-full-width">
+                <mat-label></mat-label>
+                <input matInput formControlName="ssn">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row col-12 justify-content-start">
+            <div>
+              <mat-label class="mr-3"><b>Drivers License</b></mat-label>
+              <mat-form-field class="example-full-width">
+                <mat-label></mat-label>
+                <input matInput formControlName="license">
+              </mat-form-field>
+            </div>
+          </div>
+          </ng-container>
+        </form>
+      </div>
+      <div class="col-4 justify-content-center">
+        <div class="card text-center">
+          <div class="card-header">
+            Details
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <mat-label><h2><b>Credit History</b></h2></mat-label>
+              <mat-divider></mat-divider>
+              <div *ngFor="let creditHistory of appService.creditHistory" class="row col-12 mt-3">
+                <div class="col-12">
+                  Total Mortgage :{{creditHistory['Total Mortgage']}}
+                </div>
+                <div class="col-12">
+                  Outstanding Balance : {{creditHistory['Outstanding Balance']}}
+                </div>
+                <div class="col-12">
+                  Credit Score : {{creditHistory['Credit Score']}}
+                </div>
+              </div>
+              <mat-label><h2 class="mt-3"><b>Driver History</b></h2></mat-label>
+              <mat-divider></mat-divider>
+              <div *ngFor="let driverHistory of appService.driverHistory" class="row col-12 mt-3">
+                <div class="col-12">
+                  Conviction Description :{{driverHistory['Conviction Description']}}
+                </div>
+                <div class="col-12">
+                  Year of Conviction : {{driverHistory['Year of Conviction']}}
+                </div>
+            </div>
+              <mat-label><h2 class="mt-3"><b>Drug History</b></h2></mat-label>
+              <mat-divider></mat-divider>
+            <div *ngFor="let drugHistory of appService.drugHistory" class="row col-12 mt-3">
+              <div class="col-12">
+                Drug Type :{{drugHistory['Type']}}
+              </div>
+              <div class="col-12">
+                Drug Name : {{drugHistory['Drug Name']}}
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn btn-group" *ngIf="proceedWithApp">
+      <button mat-button class="btn btn-primary mr-2">Start Application</button>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company
+    2600 Dodge Street, Omaha, Nebraska 68131 </div>
+
+
+</div>
+

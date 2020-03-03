@@ -49,7 +49,9 @@ export class PageTwoComponent implements OnInit {
     const ldl = cholestoralReadings.controls.ldl.value;
     const ratio =  hdl/ldl;
     console.log(Math.round(ratio));
-    cholestoralReadings.controls.ratio.setValue(Math.round(ratio));
+    if (ratio) {
+      cholestoralReadings.controls.ratio.setValue(Math.round(ratio));
+    }
   }
 
   goToPreviousPage() {
