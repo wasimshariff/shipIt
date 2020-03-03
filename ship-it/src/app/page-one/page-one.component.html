@@ -1,12 +1,9 @@
 <div class="card text-center">
   <div class="card-header">
-    <b>Applicant Info</b>
+    <b>Applicant Information</b>
   </div>
   <div class="card-body">
     <h5 class="card-title"></h5>
-    <div *ngFor="let student of students | async">
-      Student Name : {{student.student_name}}
-    </div>
     <div class="row">
       <div class="col-6 justify-content-center">
         <form class="" [formGroup]="formGroup">
@@ -97,10 +94,11 @@
       <div class="col-6 justify-content-center">
         <div class="card text-center">
           <div class="card-header">
-            Featured
+            Tell us about Yourself
           </div>
           <div class="card-body">
-            <p class="card-text">Side Content....</p>
+            <p class="card-text">Applicant's Personal information is used
+              solely for the purpose of evaluating an application. We do not share information with third parties.</p>
           </div>
         </div>
       </div>

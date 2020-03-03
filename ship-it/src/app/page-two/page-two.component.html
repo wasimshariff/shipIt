@@ -10,7 +10,7 @@
           <div formGroupName="tobaccoUsage">
           <div class="row mb-3">
             <div class="col-6 justify-content-start">
-              <mat-label>Have you used any tobacco, nicotine, marijuana, vape, e-cigarette or tobacco substitute in the last 5 years?</mat-label>
+              <mat-label><b>Have you used any tobacco, nicotine, marijuana, vape, e-cigarette or tobacco substitute in the last 5 years?</b></mat-label>
             </div>
             <div class="col-6 justify-content-start">
               <mat-radio-group aria-label="Select an option" formControlName="tobaccoIndicator">
@@ -36,14 +36,17 @@
             </div>
           </div>
           <div class="row col-12 justify-content-start mb-3">
-            <mat-label><b>Select which ever apply</b></mat-label>
+            <mat-label><b>In the Past 5 years, which of the following have you seen a Doctor for?</b></mat-label>
           </div>
           <div class="row justify-content-start mb-3">
             <mat-chip-list>
-              <mat-chip (click)="selectCondition('asthma')" [ngClass]="getActiveClass('asthma')" >Asthma</mat-chip>
-              <mat-chip (click)="selectCondition('thyroid')" [ngClass]="getActiveClass('thyroid')">Thyroid</mat-chip>
-              <mat-chip (click)="selectCondition('bp')" [ngClass]="getActiveClass('bp')">Blood Pressure</mat-chip>
+              <mat-chip (click)="selectCondition('alcoholabuse')" [ngClass]="getActiveClass('alcoholabuse')">Alcohol Abuse</mat-chip>
+              <mat-chip (click)="selectCondition('anxiety')" [ngClass]="getActiveClass('anxiety')">Anxiety, ADD or ADHD</mat-chip>
+              <mat-chip (click)="selectCondition('bp')" [ngClass]="getActiveClass('bp')">Blood Pressure (Hypertension)</mat-chip>
               <mat-chip (click)="selectCondition('ch')" [ngClass]="getActiveClass('ch')">Cholesterol</mat-chip>
+              <mat-chip (click)="selectCondition('drugabuse')" [ngClass]="getActiveClass('drugabuse')">Drug Abuse</mat-chip>
+              <mat-chip (click)="selectCondition('ulcer')" [ngClass]="getActiveClass('ulcer')">Gastric Ulcers</mat-chip>
+              <mat-chip (click)="selectCondition('kidney')" [ngClass]="getActiveClass('kidney')">Kidney Stone</mat-chip>
             </mat-chip-list>
           </div>
           <div class="row justify-content-start mb-3">
@@ -53,13 +56,13 @@
             <div class="row justify-content-center mb-3">
               <div class="col-6">
                 <mat-form-field class="example-full-width col-12">
-                  <mat-label>What is your Systolic pressure?</mat-label>
+                  <mat-label>Systolic pressure</mat-label>
                   <input matInput>
                 </mat-form-field>
               </div>
               <div class="col-6">
                 <mat-form-field class="example-full-width col-12">
-                  <mat-label>What is your Diastolic pressure?</mat-label>
+                  <mat-label>Diastolic pressure</mat-label>
                   <input matInput>
                 </mat-form-field>
               </div>
@@ -71,13 +74,13 @@
               <div class="row justify-content-center mb-3">
                 <div class="col-6">
                   <mat-form-field class="example-full-width col-12">
-                    <mat-label>What is your Hdl?</mat-label>
+                    <mat-label>Total Cholesterol</mat-label>
                     <input matInput formControlName="hdl">
                   </mat-form-field>
                 </div>
                 <div class="col-6">
                   <mat-form-field class="example-full-width col-12">
-                    <mat-label>What is your Ldl?</mat-label>
+                    <mat-label>HDL</mat-label>
                     <input matInput formControlName="ldl">
                   </mat-form-field>
                 </div>
@@ -85,7 +88,7 @@
             </div>
             <div class="row">
               <mat-form-field class="example-full-width col-12">
-                <mat-label>List history of vascular or heart disease(i.e. what diagnosis?)</mat-label>
+                <mat-label>List history of vascular or heart disease if any</mat-label>
                 <input matInput >
               </mat-form-field>
             </div>
@@ -119,16 +122,33 @@
             </div>
 
           </div>
+          <div class="row col-12 justify-content-start mb-3">
+            <mat-label><b>Have you ever been treated for these Medical Conditions?</b></mat-label>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <mat-chip-list>
+              <mat-chip (click)="selectCondition('Alzheimer')" [ngClass]="getActiveClass('Alzheimer')">Alzheimer's</mat-chip>
+              <mat-chip (click)="selectCondition('Cancer')" [ngClass]="getActiveClass('Cancer')">Cancer</mat-chip>
+              <mat-chip (click)="selectCondition('crohn')" [ngClass]="getActiveClass('crohn')">Crohn's Disease</mat-chip>
+              <mat-chip (click)="selectCondition('Epilepsy')" [ngClass]="getActiveClass('Epilepsy')">Epilepsy</mat-chip>
+              <mat-chip (click)="selectCondition('fibromyalgia')" [ngClass]="getActiveClass('fibromyalgia')">Fibromyalgia</mat-chip>
+              <mat-chip (click)="selectCondition('Sleepapnea')" [ngClass]="getActiveClass('Sleepapnea')">Sleep Apnea</mat-chip>
+              <mat-chip (click)="selectCondition('Stroke')" [ngClass]="getActiveClass('Stroke')">Stroke</mat-chip>
+              <mat-chip (click)="selectCondition('Hepatitis')" [ngClass]="getActiveClass('Hepatitis')">Hepatitis or Liver Disease</mat-chip>
+              <mat-chip (click)="selectCondition('Parkinson')" [ngClass]="getActiveClass('Parkinson')">Parkinson's Disease</mat-chip>
+            </mat-chip-list>
+          </div>
 
         </form>
       </div>
       <div class="col-6 justify-content-center mb-3">
         <div class="card text-center">
           <div class="card-header">
-            Featured
+            Tell us about Yourself
           </div>
           <div class="card-body">
-            <p class="card-text">Side Content....</p>
+            <p class="card-text">Applicant's Health information is used
+              solely for the purpose of evaluating an application. We do not share information with third parties.</p>
           </div>
         </div>
       </div>
