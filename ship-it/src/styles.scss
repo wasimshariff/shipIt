@@ -165,6 +165,9 @@ hr.sidebarDivider {
 .mat-checkbox.mat-accent .mat-checkbox-inner-container {
   margin: 2px 8px auto 0;
 }
+.mat-checkbox-label {
+  font-weight: normal;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

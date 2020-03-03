@@ -7,9 +7,11 @@ export class ApplicantInfo {
   firstName: string;
   lastName: string;
   tobaccoUsage: TobaccoUsage;
-  bpReading: BpIndicators;
+  cholestoralReadings: CholestoralReadings;
   finance: FinanceIndicators;
   address: Address;
+  bmi: number;
+  annualIncome: number;
 }
 
 export class TobaccoUsage {
@@ -17,7 +19,7 @@ export class TobaccoUsage {
   usageDuration: number;
 }
 
-export class BpIndicators {
+export class CholestoralReadings {
   hdl: number;
   ldl: number;
   ratio: number;

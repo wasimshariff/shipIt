@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {AppService} from '../service/app.service';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-welcome-page',
@@ -8,9 +10,13 @@ import {Router} from "@angular/router";
 })
 export class WelcomePageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appService: AppService) { }
+
+  formGroup: FormGroup;
 
   ngOnInit() {
+    this.formGroup = this.appService.formGroup;
+
   }
 
   goToNextPage() {

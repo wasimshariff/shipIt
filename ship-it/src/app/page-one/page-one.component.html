@@ -105,8 +105,11 @@
         </div>
       </div>
     </div>
-    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
+    <div class="btn btn-group">
+    <button mat-button (click)="goToPreviousPage()" class="btn btn-primary mr-2">Back</button>
 
+    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
+    </div>
   </div>
   <div class="card-footer text-muted">
     © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company

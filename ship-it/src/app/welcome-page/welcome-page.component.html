@@ -1,12 +1,26 @@
 <div class="card text-center">
   <div class="card-header">
-    Featured
+    <h2>Look to the Future With Confidence</h2>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Look to the Future With Confidence</h5>
-    <p class="card-text">Answer a few simple questions, View the best coverages available, Get Insurance
+    <form [formGroup]="formGroup">
+    <img src="assets/our_story.jpg" alt="Physicians Mutual" id="logo"
+         class="img-responsive" />
+    <br/>
+    <h5 class="card-title"></h5>
+    <p class="card-text mt-3">Answer a few simple questions, View the best coverages available, Get Insurance
       at the click of a button</p>
-    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Find the Right Coverage</button>
+    <div class="row justify-content-center">
+      <div>
+        <mat-label class="mr-3"><b>Desired Coverage</b></mat-label>
+        <mat-form-field class="example-full-width">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="coverage">
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Start an Application</button>
+    </form>
   </div>
   <div class="card-footer text-muted">
     © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company

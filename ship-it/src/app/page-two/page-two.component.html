@@ -1,6 +1,6 @@
 <div class="card text-center">
   <div class="card-header">
-    <b>Tobacco Usage</b>
+    <b>Health Information</b>
   </div>
   <div class="card-body">
     <h5 class="card-title"></h5>
@@ -48,34 +48,41 @@
           </div>
           <div class="row justify-content-start mb-3">
           </div>
-          <div formGroupName="bpReading" *ngIf="isConditionSelected('bp')">
+          <div *ngIf="isConditionSelected('bp')">
             <mat-label class="row col-12 justify-content-start"><br/><b>Blood Pressure Readings</b></mat-label>
             <div class="row justify-content-center mb-3">
               <div class="col-6">
-                <mat-form-field>
-                  <mat-label>What is your Hdl</mat-label>
-                  <mat-select formControlName="hdl" name="hdl">
-                    <mat-option *ngFor="let hdlOption of hdl" [value]="hdlOption.value">
-                      {{hdlOption.viewValue}}
-                    </mat-option>
-                  </mat-select>
+                <mat-form-field class="example-full-width col-12">
+                  <mat-label>What is your Systolic pressure?</mat-label>
+                  <input matInput>
                 </mat-form-field>
               </div>
               <div class="col-6">
-                <mat-form-field>
-                  <mat-label>What is your Ldl</mat-label>
-                  <mat-select formControlName="ldl" name="ldl">
-                    <mat-option *ngFor="let ldlOption of ldl" [value]="ldlOption.value">
-                      {{ldlOption.viewValue}}
-                    </mat-option>
-                  </mat-select>
+                <mat-form-field class="example-full-width col-12">
+                  <mat-label>What is your Diastolic pressure?</mat-label>
+                  <input matInput>
                 </mat-form-field>
               </div>
             </div>
           </div>
-
-          <div *ngIf="isConditionSelected('ch')">
+          <div formGroupName="cholestoralReadings" *ngIf="isConditionSelected('ch')">
             <mat-label class="row col-12 justify-content-start"><br/><b>Cholesterol Questions</b></mat-label>
+            <div class="row">
+              <div class="row justify-content-center mb-3">
+                <div class="col-6">
+                  <mat-form-field class="example-full-width col-12">
+                    <mat-label>What is your Hdl?</mat-label>
+                    <input matInput formControlName="hdl">
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="example-full-width col-12">
+                    <mat-label>What is your Ldl?</mat-label>
+                    <input matInput formControlName="ldl">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <mat-form-field class="example-full-width col-12">
                 <mat-label>List history of vascular or heart disease(i.e. what diagnosis?)</mat-label>
@@ -126,8 +133,9 @@
         </div>
       </div>
     </div>
-    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
+    <button mat-button (click)="goToPreviousPage()" class="btn btn-primary mr-2">Back</button>
 
+    <button mat-button (click)="goToNextPage()" class="btn btn-primary">Next</button>
   </div>
   <div class="card-footer text-muted">
     © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company

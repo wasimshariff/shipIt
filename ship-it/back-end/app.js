@@ -19,7 +19,7 @@ mongoose.connect(dataBaseConfig.db, {
 );
 
 // Set up express js port
-const studentRoute = require('../back-end/routes/student.route')
+const studentRoute = require('./routes/app.route');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

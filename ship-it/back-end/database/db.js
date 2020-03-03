@@ -1,3 +1,3 @@
 module.exports = {
-  db: 'mongodb://localhost:27017/studentDB'
+  db: 'mongodb://localhost:27017/underwriting'
 };

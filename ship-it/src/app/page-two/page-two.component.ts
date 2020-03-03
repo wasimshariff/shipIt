@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AppService} from '../service/app.service';
-import {FormGroup} from '@angular/forms';
+import {Form, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {SelectOption} from '../model/app.models';
 
@@ -17,18 +17,17 @@ export class PageTwoComponent implements OnInit {
   condition: string[] = [];
 
   tobaccoUsageOptions: SelectOption[] = [
-    {value: 'M', viewValue: 'Male'},
-    {value: 'F', viewValue: 'Female'}
-  ];
-
-  hdl: SelectOption[] = [
-    {value: '100', viewValue: '100'},
-    {value: '150', viewValue: '150'}
-  ];
-
-  ldl: SelectOption[] = [
-    {value: '200', viewValue: '200'},
-    {value: '250', viewValue: '250'}
+    {value: 'D4', viewValue: 'None in the Last 4 Years'},
+    {value: 'D3', viewValue: 'None in the Last 3 Years'},
+    {value: 'D2', viewValue: 'None in the Last 2 Years'},
+    {value: 'D1', viewValue: 'None in the Last Year'},
+    {value: 'MT24', viewValue: 'More than 24 in the Last Year'},
+    {value: 'LT24', viewValue: 'Less than 24 in the Last Year'},
+    {value: 'VAPE', viewValue: 'Vape or E-Cigarette'},
+    {value: 'CIGAR', viewValue: 'Cigar use in the Last Year'},
+    {value: 'CHEW', viewValue: 'Chewing Tobacco, Nicotine replacement'},
+    {value: 'MRJUNA', viewValue: 'Marijuana use, 2 or fewer times per month'},
+    {value: 'MRJUNA2', viewValue: 'Marijuana use, more than 2 times per month'}
   ];
 
   constructor(private htpClient: HttpClient, private appService: AppService, private router: Router) { }
@@ -38,7 +37,24 @@ export class PageTwoComponent implements OnInit {
   }
 
   goToNextPage() {
+    this.calculateCholesterolRatio();
     console.log(JSON.stringify(this.formGroup.value));
+    this.router.navigate(['/pageThree']);
+
+  }
+
+  private calculateCholesterolRatio() {
+    const cholestoralReadings: FormGroup = this.formGroup.controls.cholestoralReadings as FormGroup;
+    const hdl = cholestoralReadings.controls.hdl.value;
+    const ldl = cholestoralReadings.controls.ldl.value;
+    const ratio =  hdl/ldl;
+    console.log(Math.round(ratio));
+    cholestoralReadings.controls.ratio.setValue(Math.round(ratio));
+  }
+
+  goToPreviousPage() {
+    console.log(JSON.stringify(this.formGroup.value));
+    this.router.navigate(['/pageOne']);
   }
 
   selectCondition(c: string) {

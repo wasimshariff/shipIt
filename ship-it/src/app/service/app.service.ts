@@ -18,13 +18,16 @@ export class AppService {
       lastName: [''],
       height: [''],
       weight: [''],
+      bmi: [''],
       gender: [''],
+      annualIncome: [''],
+      coverage: [''],
       dateOfBirth: [''],
       tobaccoUsage: this.fb.group({
         tobaccoIndicator: [false],
         usageDuration: ['']
       }),
-      bpReading: this.fb.group({
+      cholestoralReadings: this.fb.group({
         hdl: [''],
         ldl: [''],
         ratio: ['']

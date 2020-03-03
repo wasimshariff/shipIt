@@ -11,13 +11,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {PageTwoComponent} from './page-two/page-two.component';
 import {MatCheckboxModule} from '@angular/material';
+import {PageThreeComponent} from './page-three/page-three.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
     PageOneComponent,
-    PageTwoComponent
+    PageTwoComponent,
+    PageThreeComponent
   ],
   imports: [
     BrowserModule,
