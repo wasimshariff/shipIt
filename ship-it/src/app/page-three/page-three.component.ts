@@ -62,6 +62,7 @@ export class PageThreeComponent implements OnInit {
       this.formGroup.controls.annualIncome.value);
 
     if (eligibleCoverage) {
+      this.appService.eligibleCoverage = eligibleCoverage;
       this.formGroup.controls.maxEligibleCoverage.setValue(eligibleCoverage.AvailableMaximumCoverage);
     }
   }

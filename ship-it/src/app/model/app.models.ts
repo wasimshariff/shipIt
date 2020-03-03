@@ -41,3 +41,14 @@ export class Address {
   state: string;
   zipCode: string;
 }
+
+export interface DriverHistory {
+  licenseNumber: string;
+  ConvictionDescription: string;
+  YearofConviction: number;
+  MonthofConviction: string;
+  AgeonViolationDate: number;
+  Sex: string;
+  LicenseClassonViolationDate: string;
+  CourtName: string;
+}

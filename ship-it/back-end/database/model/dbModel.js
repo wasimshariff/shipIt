@@ -52,28 +52,28 @@ let CrossRef = new Schema({
 });
 
 let DMV = new Schema({
-  licenseNumber: {
+  LicenseNumber: {
     type: String
   },
-  "Conviction Description": {
+  "ConvictionDescription": {
     type: String
   },
-  "Year of Conviction": {
+  "YearofConviction": {
     type: String
   },
-  "Month of Conviction": {
+  "MonthofConviction": {
     type: String
   },
-  "Age on Violation Date": {
+  "AgeonViolation Date": {
     type: String
   },
   "Sex": {
     type: String
   },
-  "License Class on Violation Date": {
+  "LicenseClassonViolationDate": {
     type: String
   },
-  "Court Name": {
+  "CourtName": {
     type: String
   }
 }, {

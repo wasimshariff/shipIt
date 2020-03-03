@@ -15,6 +15,7 @@ export class AppService {
 
   drugHistory: any[] = [];
   creditHistory: any[] = [];
+  eligibleCoverage: any;
   _form: FormGroup;
 
   constructor(private fb: FormBuilder, private httpClient: HttpClient) {

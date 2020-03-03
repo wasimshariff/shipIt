@@ -55,7 +55,7 @@ appRoute.get('/coverage/', (req, res, next) => {
 });
 
 appRoute.get('/driverHistory/:id', (req, res, next) => {
-  dbModel.DMV.find({ licenseNumber : req.params.id }, (error, data) => {
+  dbModel.DMV.find({ LicenseNumber : req.params.id }, (error, data) => {
     if (error) {
       return next(error)
     } else {

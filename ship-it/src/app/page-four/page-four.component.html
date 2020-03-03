@@ -17,8 +17,15 @@
             </div>
           </div>
           <div class="row col-12 justify-content-start">
-            <div>
-              <mat-label class="mr-3"><b>Max eligible Coverage</b></mat-label>
+            <div *ngIf="!isDuiFound">
+              <mat-label class="mr-3"><b>Max Eligible Coverage</b></mat-label>
+              <mat-form-field class="example-full-width">
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="maxEligibleCoverage">
+              </mat-form-field>
+            </div>
+            <div *ngIf="isDuiFound">
+              <mat-label class="mr-3" style="color: red"><b>Revised Eligible Coverage</b></mat-label>
               <mat-form-field class="example-full-width">
                 <mat-label>Amount</mat-label>
                 <input matInput formControlName="maxEligibleCoverage">
@@ -26,27 +33,37 @@
             </div>
           </div>
           <div class="btn btn-group">
-            <button mat-button (click)="proceedWithApp = !proceedWithApp" class="btn btn-primary mr-2">Do you want to Proceed</button>
+            <button mat-button (click)="proceedWithApp = !proceedWithApp" class="btn btn-primary mr-2">Do you want to
+              Proceed
+            </button>
           </div>
           <ng-container *ngIf="proceedWithApp">
-          <div class="row col-12 justify-content-start">
-            <div>
-              <mat-label class="mr-3"><b>SSN</b></mat-label>
-              <mat-form-field class="example-full-width">
-                <mat-label></mat-label>
-                <input matInput formControlName="ssn">
-              </mat-form-field>
+            <div class="row col-12 justify-content-start">
+              <div>
+                <mat-label class="mr-3"><b>SSN</b></mat-label>
+                <mat-form-field class="example-full-width">
+                  <mat-label></mat-label>
+                  <input matInput formControlName="ssn">
+                </mat-form-field>
+              </div>
             </div>
-          </div>
-          <div class="row col-12 justify-content-start">
-            <div>
-              <mat-label class="mr-3"><b>Drivers License</b></mat-label>
-              <mat-form-field class="example-full-width">
-                <mat-label></mat-label>
-                <input matInput formControlName="license">
-              </mat-form-field>
+            <div class="row col-12 justify-content-start">
+              <div>
+                <mat-label class="mr-3"><b>Drivers License</b></mat-label>
+                <mat-form-field class="example-full-width">
+                  <mat-label></mat-label>
+                  <input matInput formControlName="license">
+                </mat-form-field>
+              </div>
             </div>
-          </div>
+            <div class="row col-12 justify-content-start">
+                <mat-checkbox (click)="getInfo()">I authorize any health plan, physician, health care professional, pharmacy or pharmacy benefit manager that has provided payment, treatment or services to me or on my behalf within the past five (5) years to disclose my entire medical record, prescription history, medications prescribed, and any other protected health information concerning me.</mat-checkbox>
+            </div>
+            <div class="row">
+              <div class="col-12 justify-content-center btn btn-group" *ngIf="proceedWithApp && this.authorised">
+                <button mat-button class="btn btn-primary mr-2">Submit Application</button>
+              </div>
+            </div>
           </ng-container>
         </form>
       </div>
@@ -74,34 +91,33 @@
               <mat-divider></mat-divider>
               <div *ngFor="let driverHistory of appService.driverHistory" class="row col-12 mt-3">
                 <div class="col-12">
-                  Conviction Description :{{driverHistory['Conviction Description']}}
+                  Conviction Description :{{driverHistory['ConvictionDescription']}}
                 </div>
                 <div class="col-12">
-                  Year of Conviction : {{driverHistory['Year of Conviction']}}
+                  Year of Conviction : {{driverHistory['YearofConviction']}}
                 </div>
-            </div>
+              </div>
               <mat-label><h2 class="mt-3"><b>Drug History</b></h2></mat-label>
               <mat-divider></mat-divider>
-            <div *ngFor="let drugHistory of appService.drugHistory" class="row col-12 mt-3">
-              <div class="col-12">
-                Drug Type :{{drugHistory['Type']}}
+              <div *ngFor="let drugHistory of appService.drugHistory" class="row col-12 mt-3">
+                <div class="col-12">
+                  Drug Type :{{drugHistory['Type']}}
+                </div>
+                <div class="col-12">
+                  Drug Name : {{drugHistory['Drug Name']}}
+                </div>
               </div>
-              <div class="col-12">
-                Drug Name : {{drugHistory['Drug Name']}}
-              </div>
-            </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="btn btn-group" *ngIf="proceedWithApp">
-      <button mat-button class="btn btn-primary mr-2">Start Application</button>
-    </div>
   </div>
   <div class="card-footer text-muted">
-    © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life Insurance Company
-    2600 Dodge Street, Omaha, Nebraska 68131 </div>
+    © Physicians Mutual®, 2002-2020. All Rights Reserved. Physicians Mutual Insurance Company • Physicians Life
+    Insurance Company
+    2600 Dodge Street, Omaha, Nebraska 68131
+  </div>
 
 
 </div>
